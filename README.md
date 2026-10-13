@@ -1,17 +1,17 @@
-# Sol Burner
+﻿# Sol Burner
 
 A production-grade **Solana wallet cleanup and rent-recovery** platform. Close
-unused SPL token accounts and reclaim the SOL locked up as their rent deposit —
+unused SPL token accounts and reclaim the SOL locked up as their rent deposit â€”
 non-custodial, fast, and with completely transparent fees.
 
 > Every account on Solana must be rent-exempt, which means each SPL token account
-> holds a small SOL deposit (~0.002 SOL). When you no longer need an account, you
+> holds a small SOL deposit (about 0.0015 SOL on mainnet today). When you no longer need an account, you
 > can close it and that deposit is returned to your wallet. Most wallets accumulate
 > dozens or hundreds of these. Sol Burner finds them and helps you reclaim the SOL.
 
 ---
 
-## Security and trust — read this first
+## Security and trust â€” read this first
 
 This is the source of the app running at **https://solburner.claims**. It is published so
 you do not have to take any claim here on faith: read the code, then check it against what
@@ -40,8 +40,8 @@ instructions above. All of them were in the published code; the table was incomp
 **Non-custodial.** The app never holds your assets and never sees a private key. You sign
 every transaction in your own wallet, and recovered SOL lands directly in your wallet.
 
-**The fee.** 0.87% of the SOL you recover (`VITE_FEE_RATE=0.0087`). The exact breakdown —
-gross recovered, fee, network fee, what you receive — is shown before you sign. Solana's
+**The fee.** 0.87% of the SOL you recover (`VITE_FEE_RATE=0.0087`). The exact breakdown â€”
+gross recovered, fee, network fee, what you receive â€” is shown before you sign. Solana's
 own network fee applies on top, as it does for any transaction.
 
 **Simulation before signing.** Every transaction is simulated first
@@ -51,11 +51,11 @@ you to sign something that would fail.
 **How to verify, without trusting us.** In your wallet's transaction preview, you should see
 only `CloseAccount` / `Burn` instructions, SOL coming *in*, and one small outgoing fee
 transfer. If a preview ever shows tokens, NFTs or SOL leaving to an address you did not
-expect, reject it — on this app or any other.
+expect, reject it â€” on this app or any other.
 
 **Being straight about the risks.** The domain is new, so it has no long public track
-record, and parts of the ecosystem flag new domains by default. If that bothers you — and
-it is a reasonable thing to weigh — use a burner wallet, or close accounts yourself using
+record, and parts of the ecosystem flag new domains by default. If that bothers you â€” and
+it is a reasonable thing to weigh â€” use a burner wallet, or close accounts yourself using
 [Solana's documented close-account operation](https://solana.com/docs/tokens/basics/close-account),
 which costs nothing but takes one account at a time.
 
@@ -67,17 +67,17 @@ wallet.
 
 ## Highlights
 
-- **Transparent fees** — every figure shown (gross, fee %, net, savings) comes from
+- **Transparent fees** â€” every figure shown (gross, fee %, net, savings) comes from
   a single fee engine that also builds the on-chain transfer. The preview can never
   disagree with what you sign.
-- **Fast, resilient scanning** — parallel reads across both SPL token programs with
+- **Fast, resilient scanning** â€” parallel reads across both SPL token programs with
   automatic RPC failover and retry.
-- **Non-custodial** — you sign every transaction; recovered SOL goes straight to
+- **Non-custodial** â€” you sign every transaction; recovered SOL goes straight to
   your wallet. The app never has custody.
-- **Pre-flight simulation** — transactions are simulated before you're asked to sign.
-- **White-label ready** — branding, themes, fees, RPC, and feature flags all come
+- **Pre-flight simulation** â€” transactions are simulated before you're asked to sign.
+- **White-label ready** â€” branding, themes, fees, RPC, and feature flags all come
   from configuration. Ship multiple branded deployments from one codebase.
-- **Three built-in themes** — Professional, Degen, and Minimal, switchable at runtime.
+- **Three built-in themes** â€” Professional, Degen, and Minimal, switchable at runtime.
 
 ---
 
@@ -89,8 +89,8 @@ npm install
 
 # 2. Configure (all values are public/client-side)
 cp .env.example .env.local
-#   → set VITE_RPC_PRIMARY to a dedicated RPC endpoint for production
-#   → set VITE_FEE_RECIPIENT if you want to collect a service fee
+#   â†’ set VITE_RPC_PRIMARY to a dedicated RPC endpoint for production
+#   â†’ set VITE_FEE_RECIPIENT if you want to collect a service fee
 
 # 3. Develop
 npm run dev
@@ -112,7 +112,7 @@ npm run build && npm run preview
 
 Configuration is read from `.env` **once at startup** and frozen (see
 [`src/config`](src/config)), so **editing `.env.local` requires a dev-server
-restart** — hot-reload (HMR) will not pick up env changes.
+restart** â€” hot-reload (HMR) will not pick up env changes.
 
 To restart:
 
@@ -143,15 +143,15 @@ and adjust.
 | --------------------------------- | ----------------------------------------------------------- | ---------------------- |
 | `VITE_BRAND`                      | Active brand/theme: `professional` \| `degen` \| `minimal`  | `degen`                |
 | `VITE_RPC_PRIMARY`                | Primary RPC endpoint (**use a dedicated one in prod**)      | public mainnet RPC     |
-| `VITE_RPC_FALLBACKS`              | Comma-separated fallback endpoints                          | —                      |
+| `VITE_RPC_FALLBACKS`              | Comma-separated fallback endpoints                          | â€”                      |
 | `VITE_SOLANA_NETWORK`             | `mainnet-beta` \| `devnet` \| `testnet`                     | `mainnet-beta`         |
 | `VITE_FEE_RATE`                   | Service fee as a fraction (`0.0087` = 0.87%)                | `0.0087`               |
 | `VITE_FEE_MIN_SOL`                | Absolute fee floor in SOL (`0` disables)                    | `0`                    |
 | `VITE_FEE_MAX_SOL`                | Absolute fee ceiling in SOL (`0` disables)                  | `0`                    |
-| `VITE_FEE_RECIPIENT`              | Fee recipient pubkey (empty = **no fee charged**)           | —                      |
+| `VITE_FEE_RECIPIENT`              | Fee recipient pubkey (empty = **no fee charged**)           | â€”                      |
 | `VITE_BENCHMARK_FEE_RATE`         | Benchmark for the "you save vs X%" comparison (empty=off)   | `0.02`                 |
 | `VITE_REFERRAL_SHARE`             | Share of the fee routed to a referrer (`0.30` = 30%)        | `0`                    |
-| `VITE_REFERRAL_RECIPIENT`         | Referral recipient pubkey                                   | —                      |
+| `VITE_REFERRAL_RECIPIENT`         | Referral recipient pubkey                                   | â€”                      |
 | `VITE_FEATURE_BURN_TOKENS`        | Allow burning non-zero balances before closing             | `true`                 |
 | `VITE_FEATURE_CLOSE_EMPTY`        | Allow closing empty accounts                                | `true`                 |
 | `VITE_FEATURE_SIMULATE`           | Simulate before signing                                     | `true`                 |
@@ -166,8 +166,8 @@ and adjust.
 
 A deployment's identity lives entirely in configuration:
 
-- **Brand copy & social links** — [`src/config/brands.ts`](src/config/brands.ts)
-- **Visual identity (colors, fonts, decor)** — [`src/theme/themes`](src/theme/themes)
+- **Brand copy & social links** â€” [`src/config/brands.ts`](src/config/brands.ts)
+- **Visual identity (colors, fonts, decor)** â€” [`src/theme/themes`](src/theme/themes)
 
 The theme engine ([`src/theme/applyTheme.ts`](src/theme/applyTheme.ts)) maps a
 theme to CSS custom properties on `:root`, which Tailwind tokens consume. Switching
@@ -182,13 +182,13 @@ To add a brand: add a `BrandConfig`, add a matching `Theme`, register both, set
 All fee math flows through one function: `computeFee` in
 [`src/core/fees/calculator.ts`](src/core/fees/calculator.ts). It is pure, operates
 in integer lamports (`bigint`) to avoid float drift, and is the *only* place fees
-are computed — the UI preview and the on-chain `SystemProgram.transfer` use the
+are computed â€” the UI preview and the on-chain `SystemProgram.transfer` use the
 exact same numbers. See the unit tests for the contract.
 
 ```
-gross  = Σ rent of selected accounts
-fee    = clamp(gross × rate, min, max)   (0 if no recipient configured)
-net    = gross − fee
+gross  = Î£ rent of selected accounts
+fee    = clamp(gross Ã— rate, min, max)   (0 if no recipient configured)
+net    = gross âˆ’ fee
 ```
 
 ---
@@ -211,4 +211,4 @@ See [`ARCHITECTURE.md`](ARCHITECTURE.md) for the full module breakdown and data 
 ## License
 
 MIT. Not affiliated with the Solana Foundation. Burning token balances is
-irreversible — review your selection before confirming.
+irreversible â€” review your selection before confirming.
