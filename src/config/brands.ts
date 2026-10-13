@@ -14,6 +14,9 @@ import type { BrandConfig, BrandId } from './types';
  */
 const SOURCE_URL = 'https://github.com/DegenPotato/solburner';
 
+/** solburner.claims' own X account (created 2026-10-13). Only the SOLBurner brand links it. */
+const X_URL = 'https://x.com/solburnerapp';
+
 const BRANDS: Record<BrandId, BrandConfig> = {
   professional: {
     id: 'professional',
@@ -36,7 +39,10 @@ const BRANDS: Record<BrandId, BrandConfig> = {
     footerNote: 'gm. non-custodial. you sign, you win. ngmi if you leave rent on the table.',
     // Search engines show this title; it carries what people search for, the tagline stays on the page.
     documentTitle: 'SOLBurner — Reclaim Solana rent from empty token accounts (0.87% fee)',
-    socials: [{ label: 'Source', href: SOURCE_URL, icon: 'github' }],
+    socials: [
+      { label: 'X', href: X_URL, icon: 'twitter' },
+      { label: 'Source', href: SOURCE_URL, icon: 'github' },
+    ],
   },
   minimal: {
     id: 'minimal',
