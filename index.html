@@ -48,7 +48,7 @@
     <div id="root">
       <main style="max-width:760px;margin:0 auto;padding:48px 16px;font-family:system-ui,sans-serif;color:#e9f2ec;background:#080b09;line-height:1.55">
         <h1>Reclaim the SOL locked in your empty token accounts</h1>
-        <p>Every Solana token account holds a rent deposit of about 0.0015 SOL. When its balance reaches zero the account stays open and the deposit stays locked. SOLBurner finds those accounts and closes them in one signature, returning the SOL to your wallet. Non-custodial: you sign every transaction, and recovered SOL goes straight to you.</p>
+        <p>Every Solana token account holds a rent deposit: about 0.0015 SOL for one opened today, about 0.002 SOL for an older one. When its balance reaches zero the account stays open and the deposit stays locked. SOLBurner finds those accounts and closes them in one signature, returning the SOL to your wallet. Non-custodial: you sign every transaction, and recovered SOL goes straight to you.</p>
         <p><a href="/app" style="color:#7cf2a4">Launch the app</a> · <a href="https://github.com/DegenPotato/solburner" style="color:#7cf2a4">Read the source</a></p>
 
         <h2>What reclaim tools charge</h2>
@@ -57,13 +57,13 @@
           <tr><th align="left">Option</th><th align="left">What it says it charges</th><th align="left">Effective fee</th></tr>
           <tr><td>Closing them yourself</td><td>No fee. Solana's documented close-account operation, one account at a time.</td><td>0%</td></tr>
           <tr><td>SOLBurner (this site)</td><td>0.87% service fee on the SOL recovered, shown before you sign.</td><td>0.87%</td></tr>
-          <tr><td>Sol Incinerator</td><td>“about 0.00004 SOL per standard token account and about 0.00007 SOL per Token-2022 account”, taken from the rent reclaimed.</td><td>≈2.7% (standard) · ≈4.6% (Token-2022)</td></tr>
+          <tr><td>Sol Incinerator</td><td>“about 0.00004 SOL per standard token account and about 0.00007 SOL per Token-2022 account”, taken from the rent reclaimed.</td><td>≈2.0–2.7% (standard, older to newer accounts) · ≈4.6% (Token-2022)</td></tr>
           <tr><td>Claim Your Sol</td><td>“a 5% donation is included from the recovered SOL”, plus “a small service fee” with no amount given. Measured on-chain (56 claims to their fee wallet, Oct 13, 2026): 4% on most, 5% on the rest, no second fee. 1% on the 1st of every month. Until May 2026 it was 20% (“we dropped from 20% to 5%”, their blog, May 22, 2026).</td><td>4–5% measured (1% on the 1st)</td></tr>
         </table>
 
         <h2>Questions</h2>
         <h3>Why is there SOL locked in my wallet?</h3>
-        <p>Every token account holds a rent deposit of about 0.0015 SOL. When you sell or receive a token, an account is opened for it, and when its balance reaches zero the account stays open, still holding the deposit. Closing it returns that SOL to you.</p>
+        <p>Every token account holds a rent deposit: about 0.0015 SOL for one opened today, about 0.002 SOL for an older one opened under the earlier, higher rate. When you sell or receive a token, an account is opened for it, and when its balance reaches zero the account stays open, still holding the deposit. Closing it returns that SOL to you.</p>
         <h3>Is it safe to connect my wallet?</h3>
         <p>The scan is read-only. When you recover, the app closes accounts back to your own wallet, burns only tokens you choose to burn, claims Pump.fun rewards to your wallet if you select them, and adds the SOL transfer for the service fee. It never asks for approvals, delegations or authority changes. Every transaction is simulated before you sign, and you can check it in your wallet's preview. The source code is public, with the full list of instructions.</p>
         <h3>What does it cost?</h3>

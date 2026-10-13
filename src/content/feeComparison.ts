@@ -4,7 +4,9 @@
  *
  * Re-check the competitor rows monthly: a stale competitor figure on our own
  * comparison is the fastest way to lose the trust this table is meant to earn.
- * Flat per-account fees are converted against the mainnet rent deposit
+ * Flat per-account fees are converted against the deposit an account holds: 2,039,280 lamports
+ * for older standard accounts (measured on-chain 2026-10-13) down to the current rate below.
+ * Converted against the mainnet rent deposit
  * (1,488,440 lamports standard / 1,513,840 Token-2022 on the checked date).
  */
 export const FEES_CHECKED = '2026-10-12';
@@ -36,7 +38,7 @@ export const FEE_ROWS: FeeRow[] = [
     url: 'https://sol-incinerator.com/',
     stated:
       '“about 0.00004 SOL per standard token account and about 0.00007 SOL per Token-2022 account”, taken from the rent reclaimed.',
-    effective: '≈2.7% (standard) · ≈4.6% (Token-2022)',
+    effective: '≈2.0–2.7% (standard, older to newer accounts) · ≈4.6% (Token-2022)',
   },
   {
     name: 'Claim Your Sol',
@@ -50,7 +52,7 @@ export const FEE_ROWS: FeeRow[] = [
 export const FAQ: { q: string; a: string }[] = [
   {
     q: 'Why is there SOL locked in my wallet?',
-    a: 'Every token account holds a rent deposit of about 0.0015 SOL. When you sell or receive a token, an account is opened for it, and when its balance reaches zero the account stays open, still holding the deposit. Closing it returns that SOL to you.',
+    a: 'Every token account holds a rent deposit: about 0.0015 SOL for one opened today, about 0.002 SOL for an older one opened under the earlier, higher rate. When you sell or receive a token, an account is opened for it, and when its balance reaches zero the account stays open, still holding the deposit. Closing it returns that SOL to you.',
   },
   {
     q: 'Is it safe to connect my wallet?',

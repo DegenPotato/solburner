@@ -5,7 +5,8 @@ unused SPL token accounts and reclaim the SOL locked up as their rent deposit â€
 non-custodial, fast, and with completely transparent fees.
 
 > Every account on Solana must be rent-exempt, which means each SPL token account
-> holds a small SOL deposit (about 0.0015 SOL on mainnet today). When you no longer need an account, you
+> holds a small SOL deposit (about 0.0015 SOL for one opened today, about 0.002 SOL for
+> an older one opened under the earlier rate). When you no longer need an account, you
 > can close it and that deposit is returned to your wallet. Most wallets accumulate
 > dozens or hundreds of these. Sol Burner finds them and helps you reclaim the SOL.
 
