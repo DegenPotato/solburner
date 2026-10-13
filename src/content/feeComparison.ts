@@ -42,8 +42,8 @@ export const FEE_ROWS: FeeRow[] = [
     name: 'Claim Your Sol',
     url: 'https://claimyoursol.com/',
     stated:
-      '“a 5% donation is included from the recovered SOL”, plus “a small service fee” with no amount given. 1% on the 1st of every month. Until May 2026 it was 20% (“we dropped from 20% to 5%”, their blog, May 22, 2026).',
-    effective: '5% + unstated fee (1% on the 1st)',
+      '“a 5% donation is included from the recovered SOL”, plus “a small service fee” with no amount given. Measured on-chain (56 claims to their fee wallet, Oct 13, 2026): 4% on most, 5% on the rest, no second fee. 1% on the 1st of every month. Until May 2026 it was 20% (“we dropped from 20% to 5%”, their blog, May 22, 2026).',
+    effective: '4–5% measured (1% on the 1st)',
   },
 ];
 
