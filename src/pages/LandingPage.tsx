@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Icon } from '@/components/ui/Icon';
 import type { IconName } from '@/components/ui/Icon';
+import { FAQ, FEE_ROWS, FEES_CHECKED } from '@/content/feeComparison';
 
 const FEATURES: { icon: IconName; title: string; body: string }[] = [
   {
@@ -100,6 +101,63 @@ export function LandingPage() {
               Get started
             </Button>
           </Link>
+        </div>
+      </section>
+
+      {/* Fees compared */}
+      <section id="fees" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <div className="mb-8 text-center">
+          <h2 className="font-display text-3xl font-bold text-content">What reclaim tools charge</h2>
+          <p className="mx-auto mt-2 max-w-2xl text-content-muted">
+            Each fee in the tool&apos;s own words, from its own site, checked {FEES_CHECKED}. Flat per-account fees
+            are shown as a share of the rent deposit. Every option also pays Solana&apos;s network fee.
+          </p>
+        </div>
+        <div className="overflow-x-auto rounded-theme-lg border border-surface-border bg-surface/60">
+          <table className="w-full min-w-[560px] text-left text-sm">
+            <thead className="text-content-subtle">
+              <tr>
+                <th className="px-4 py-3 font-medium">Option</th>
+                <th className="px-4 py-3 font-medium">What it says it charges</th>
+                <th className="px-4 py-3 font-medium">Effective fee</th>
+              </tr>
+            </thead>
+            <tbody>
+              {FEE_ROWS.map((row) => (
+                <tr key={row.name} className={`border-t border-surface-border ${row.ours ? 'bg-accent/10' : ''}`}>
+                  <td className="px-4 py-3 font-semibold text-content">
+                    {row.ours ? (
+                      row.name
+                    ) : (
+                      <a href={row.url} rel="nofollow noopener" target="_blank" className="underline decoration-dotted">
+                        {row.name}
+                      </a>
+                    )}
+                  </td>
+                  <td className="px-4 py-3 text-content-muted">{row.stated}</td>
+                  <td className={`px-4 py-3 font-mono ${row.ours ? 'font-bold text-accent' : 'text-content'}`}>
+                    {row.effective}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-3 text-center text-xs text-content-subtle">
+          Spotted a fee that changed? Tell us and we&apos;ll correct it.
+        </p>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+        <h2 className="mb-6 text-center font-display text-3xl font-bold text-content">Questions</h2>
+        <div className="space-y-3">
+          {FAQ.map((item) => (
+            <details key={item.q} className="rounded-theme-lg border border-surface-border bg-surface/60 p-5">
+              <summary className="cursor-pointer font-display font-semibold text-content">{item.q}</summary>
+              <p className="mt-2 text-sm text-content-muted">{item.a}</p>
+            </details>
+          ))}
         </div>
       </section>
     </div>

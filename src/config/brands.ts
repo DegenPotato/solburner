@@ -34,7 +34,8 @@ const BRANDS: Record<BrandId, BrandConfig> = {
       'Your wallet is full of dead accounts paying rent for nothing. Torch them, claim your SOL back, and keep more of it than anywhere else.',
     defaultTheme: 'degen',
     footerNote: 'gm. non-custodial. you sign, you win. ngmi if you leave rent on the table.',
-    documentTitle: 'SOLBurner — burn the junk, stack the SOL',
+    // Search engines show this title; it carries what people search for, the tagline stays on the page.
+    documentTitle: 'SOLBurner — Reclaim Solana rent from empty token accounts (0.87% fee)',
     socials: [{ label: 'Source', href: SOURCE_URL, icon: 'github' }],
   },
   minimal: {

@@ -17,16 +17,25 @@ This is the source of the app running at **https://solburner.claims**. It is pub
 you do not have to take any claim here on faith: read the code, then check it against what
 your wallet shows you before you sign.
 
-**Every instruction this app can build.** There are three, and no others:
+**Every instruction this app can build**, and no others:
 
 | Instruction | Where | What it does |
 |---|---|---|
 | `CloseAccount` | `src/solana/transactions/builder.ts`, `src/solana/pump/rewards.ts` | Closes a token account whose balance is zero and returns its rent deposit **to your own wallet** |
 | `Burn` | `src/solana/transactions/builder.ts` | Destroys tokens you have explicitly selected, so their account can then be closed |
-| `SystemProgram.transfer` | `src/solana/transactions/builder.ts` | **One** transfer, attached to the last transaction of a batch: the service fee |
+| `HarvestWithheldTokensToMint` | `src/solana/transactions/builder.ts` | Token-2022 only: moves transfer-fee tokens withheld *inside* your account back to their mint, which Token-2022 requires before the account can close. Permissionless; none of your own balance moves |
+| Pump.fun `claim_cashback` | `src/solana/pump/rewards.ts` | Only if you select a Pump.fun reward: claims the cashback Pump.fun owes **you**, into your wallet |
+| Pump.fun `close_user_volume_accumulator` | `src/solana/pump/rewards.ts` | Closes your Pump.fun volume account and returns its rent **to your own wallet** |
+| `CreateIdempotent` (associated token account) | `src/solana/pump/rewards.ts` | Pump.fun AMM cashback only: opens a temporary wrapped-SOL account **owned by you** to receive the claim; it is closed back to you in the same transaction |
+| `ComputeBudget` (limit and price) | `src/solana/transactions/builder.ts` | Sets the transaction's compute limit and priority fee, as most Solana apps do |
+| `SystemProgram.transfer` | `src/solana/transactions/builder.ts` | The service fee, attached to the last transaction of a batch. If a referral split is configured, the same fee is split across two transfers; the total stays 0.87% |
 
-That single transfer is the only instruction that moves value away from you. There is no
+The fee transfer is the only instruction that moves value away from you. There is no
 `approve`, no delegate, no `setAuthority`, no transfer of your tokens or NFTs to anyone.
+
+*Correction, 2026-10-13: an earlier version of this table listed three instructions. It
+left out the Token-2022 harvest, the Pump.fun reward claims and the compute-budget
+instructions above. All of them were in the published code; the table was incomplete.*
 
 **Non-custodial.** The app never holds your assets and never sees a private key. You sign
 every transaction in your own wallet, and recovered SOL lands directly in your wallet.
