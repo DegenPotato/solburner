@@ -41,8 +41,9 @@ export const FEE_ROWS: FeeRow[] = [
   {
     name: 'Claim Your Sol',
     url: 'https://claimyoursol.com/',
-    stated: '“a 5% donation is included from the recovered SOL”, plus “a small service fee” with no amount given.',
-    effective: '5% + unstated fee',
+    stated:
+      '“a 5% donation is included from the recovered SOL”, plus “a small service fee” with no amount given. 1% on the 1st of every month. Until May 2026 it was 20% (“we dropped from 20% to 5%”, their blog, May 22, 2026).',
+    effective: '5% + unstated fee (1% on the 1st)',
   },
 ];
 
