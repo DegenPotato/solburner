@@ -6,6 +6,14 @@
 
 import type { BrandConfig, BrandId } from './types';
 
+/**
+ * The published source of this app. Linked from every brand's footer: a wallet-
+ * connecting tool should let people read what it signs instead of trusting it.
+ * The placeholder socials that used to sit here (x.com, discord.com, github.com)
+ * were dead links in production, which reads exactly like a throwaway dapp.
+ */
+const SOURCE_URL = 'https://github.com/DegenPotato/solburner';
+
 const BRANDS: Record<BrandId, BrandConfig> = {
   professional: {
     id: 'professional',
@@ -16,11 +24,7 @@ const BRANDS: Record<BrandId, BrandConfig> = {
     defaultTheme: 'professional',
     footerNote: 'Non-custodial. You sign every transaction. We never hold your funds.',
     documentTitle: 'Sol Burner — Reclaim your Solana rent',
-    socials: [
-      { label: 'Docs', href: 'https://docs.example.com', icon: 'docs' },
-      { label: 'X', href: 'https://x.com', icon: 'twitter' },
-      { label: 'GitHub', href: 'https://github.com', icon: 'github' },
-    ],
+    socials: [{ label: 'Source', href: SOURCE_URL, icon: 'github' }],
   },
   degen: {
     id: 'degen',
@@ -31,10 +35,7 @@ const BRANDS: Record<BrandId, BrandConfig> = {
     defaultTheme: 'degen',
     footerNote: 'gm. non-custodial. you sign, you win. ngmi if you leave rent on the table.',
     documentTitle: 'SOLBurner — burn the junk, stack the SOL',
-    socials: [
-      { label: 'X', href: 'https://x.com', icon: 'twitter' },
-      { label: 'Discord', href: 'https://discord.com', icon: 'discord' },
-    ],
+    socials: [{ label: 'Source', href: SOURCE_URL, icon: 'github' }],
   },
   minimal: {
     id: 'minimal',
@@ -45,10 +46,7 @@ const BRANDS: Record<BrandId, BrandConfig> = {
     defaultTheme: 'minimal',
     footerNote: 'Open process. Simulated transactions. No custody, no hidden actions.',
     documentTitle: 'Rent Recover — verifiable account rent recovery',
-    socials: [
-      { label: 'Docs', href: 'https://docs.example.com', icon: 'docs' },
-      { label: 'GitHub', href: 'https://github.com', icon: 'github' },
-    ],
+    socials: [{ label: 'Source', href: SOURCE_URL, icon: 'github' }],
   },
 };
 
