@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Fallback tokens; the theme engine overrides these at runtime. */
+    --c-bg: 8 11 9;
+    --c-bg-elevated: 13 17 14;
+    --c-bg-inset: 5 7 6;
+    --c-surface: 18 23 20;
+    --c-surface-hover: 24 31 26;
+    --c-surface-border: 38 48 41;
+    --c-text: 233 242 236;
+    --c-text-muted: 150 165 156;
+    --c-text-subtle: 101 114 106;
+    --c-accent: 34 224 122;
+    --c-accent-strong: 22 200 104;
+    --c-accent-soft: 34 224 122;
+    --c-accent-contrast: 6 18 11;
+    --c-positive: 52 211 153;
+    --c-warning: 245 191 79;
+    --c-danger: 248 113 113;
+    --c-info: 96 165 250;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-display: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    --radius: 14px;
+    --app-bg: rgb(8 11 9);
+    --hero-bg: transparent;
+    --motion-duration: 200ms;
+  }
+
+  * {
+    border-color: rgb(var(--c-surface-border));
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: rgb(var(--c-bg));
+    color: rgb(var(--c-text));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Themed scrollbars */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--c-surface-border));
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  /* Pixel-art decorative treatment toggled by the degen theme. */
+  [data-pixel='on'] .font-display {
+    letter-spacing: 0.02em;
+  }
+  [data-pixel='on'] .pixel-edge {
+    image-rendering: pixelated;
+    box-shadow: 0 0 0 2px rgb(var(--c-bg)), 0 0 0 4px rgb(var(--c-accent) / 0.4);
+  }
+}
+
+@layer utilities {
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Reconcile the wallet-adapter modal with our theme tokens. */
+.wallet-adapter-modal-wrapper {
+  background: rgb(var(--c-bg-elevated)) !important;
+  border: 1px solid rgb(var(--c-surface-border)) !important;
+}
+.wallet-adapter-modal-title {
+  color: rgb(var(--c-text)) !important;
+}
+.wallet-adapter-modal-list .wallet-adapter-button {
+  background: rgb(var(--c-surface)) !important;
+  color: rgb(var(--c-text)) !important;
+}
+.wallet-adapter-button-trigger {
+  background: rgb(var(--c-accent)) !important;
+  color: rgb(var(--c-accent-contrast)) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

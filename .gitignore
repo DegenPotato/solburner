@@ -1,0 +1,17 @@
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+.vscode/*
+!.vscode/extensions.json
+node_modules/.tmp
+coverage
+
+# Claude Code local, machine-specific settings (may contain permission rules
+# with embedded API keys/endpoints from debugging sessions). Never commit.
+.claude/settings.local.json
