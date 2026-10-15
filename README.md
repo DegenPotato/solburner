@@ -1,4 +1,6 @@
-# Sol Burner
+# SOLBurner
+
+**Live: [solburner.claims](https://solburner.claims/)** · X: [@solburnerapp](https://x.com/solburnerapp)
 
 A production-grade **Solana wallet cleanup and rent-recovery** platform. Close
 unused SPL token accounts and reclaim the SOL locked up as their rent deposit —
